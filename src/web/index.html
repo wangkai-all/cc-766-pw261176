@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>出货缺陷率质量分析 · 选择偏差与误判联合纠正</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <h1>出货缺陷率质量分析</h1>
+        <p class="subtitle">
+          选择偏差（IPW 逆概率加权）与复查误判（Se/Sp 反演）联合估计 · 合成数据演示
+        </p>
+      </div>
+      <button id="theme-toggle" class="btn" type="button" aria-label="切换明暗主题">🌓 主题</button>
+    </header>
+
+    <main class="layout">
+      <!-- 1. 总体 KPI -->
+      <section class="card" aria-labelledby="h-overview">
+        <h2 id="h-overview">总体估计</h2>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <span class="kpi-label">纠正后总体缺陷率</span>
+            <span class="kpi-value" id="kpi-corrected">—</span>
+            <span class="kpi-sub">95% CI <span id="kpi-ci">—</span></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">naive 标签率（有偏对照）</span>
+            <span class="kpi-value" id="kpi-naive">—</span>
+            <span class="kpi-sub">偏差缺口 <span id="kpi-bias-gap">—</span></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">抽样覆盖率</span>
+            <span class="kpi-value" id="kpi-coverage">—</span>
+            <span class="kpi-sub">未覆盖 <span id="kpi-uncovered">—</span></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">含未覆盖群体的区间</span>
+            <span class="kpi-value kpi-value-sm" id="kpi-total-interval">—</span>
+            <span class="kpi-sub">未覆盖部分按 [0,1] 混合</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">测量模型</span>
+            <span class="kpi-value kpi-value-sm" id="kpi-model-source">—</span>
+            <span class="kpi-sub" id="kpi-contrast">—</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 测量模型与假设调整 -->
+      <section class="card" aria-labelledby="h-measurement">
+        <h2 id="h-measurement">复查误判模型与假设调整</h2>
+        <div class="two-col">
+          <div>
+            <dl id="measurement-list" class="meta-list"></dl>
+            <div class="assumption-box">
+              <h3>测量模型来源与人工假设（What-if）</h3>
+              <div class="assumption-row">
+                <label>识别通道
+                  <select id="measurement-mode">
+                    <option value="gold">仲裁真值 + 共识 EM（默认）</option>
+                    <option value="em-only">仅共识 EM（无真值，检验可识别性）</option>
+                  </select>
+                </label>
+              </div>
+              <div class="assumption-row" style="margin-top: 10px">
+                <label>复查者 A 灵敏度 Se (%)
+                  <input id="input-se" type="number" min="50" max="100" step="0.5" value="90" />
+                </label>
+                <label>复查者 A 特异度 Sp (%)
+                  <input id="input-sp" type="number" min="50" max="100" step="0.5" value="95" />
+                </label>
+              </div>
+              <div class="assumption-actions">
+                <button id="apply-assumption" class="btn btn-primary" type="button">应用假设并重算</button>
+                <button id="reset-assumption" class="btn" type="button">恢复数据驱动模型</button>
+              </div>
+              <p id="assumption-hint" class="hint"></p>
+            </div>
+          </div>
+          <div>
+            <h3>共同审查四格表（按产线）</h3>
+            <div id="contingency-table" class="table-scroll"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 产线对比 -->
+      <section class="card" aria-labelledby="h-lines">
+        <h2 id="h-lines">产线缺陷率差异（三口径 + 不确定性）</h2>
+        <div id="line-chart" class="chart-host"></div>
+        <div id="line-table" class="table-scroll"></div>
+      </section>
+
+      <!-- 4. 逐批追溯与覆盖 -->
+      <section class="card" aria-labelledby="h-batches">
+        <h2 id="h-batches">逐批追溯与抽样覆盖</h2>
+        <div class="filter-row">
+          <label>月份筛选
+            <select id="month-filter">
+              <option value="all">全部</option>
+              <option value="2026-10">2026-10</option>
+              <option value="2026-11">2026-11</option>
+            </select>
+          </label>
+        </div>
+        <div id="coverage-chart" class="chart-host" data-month-panel="all"></div>
+        <div id="batch-table" class="table-scroll" data-month-panel="all"></div>
+        <h3>结构性缺口（不可外推群体）</h3>
+        <div id="structural-gaps"></div>
+      </section>
+
+      <!-- 5. 抽检建议与预算分配 -->
+      <section class="card" aria-labelledby="h-budget">
+        <h2 id="h-budget">固定预算下的抽检建议</h2>
+        <div class="filter-row">
+          <label>复查预算（件数，20–400）
+            <input id="budget-input" type="number" min="20" max="400" step="10" value="150" />
+          </label>
+        </div>
+        <div id="budget-chart" class="chart-host"></div>
+        <div id="budget-summary" class="table-scroll"></div>
+        <h3>候选清单（所有建议均绑定到具体单元）</h3>
+        <div class="filter-row">
+          <label>策略
+            <select id="candidate-strategy">
+              <option value="blind-spot">盲区补查（推荐）</option>
+              <option value="balanced">均衡混合</option>
+              <option value="score-first">高分优先（现状对照）</option>
+            </select>
+          </label>
+          <button id="export-candidates" class="btn" type="button">导出候选 JSON</button>
+        </div>
+        <p id="candidate-count" class="hint"></p>
+        <div id="candidate-table" class="table-scroll tall"></div>
+      </section>
+
+      <!-- 6. 月报证据版本 -->
+      <section class="card" aria-labelledby="h-reports">
+        <h2 id="h-reports">月报证据版本：锁定 vs 更新</h2>
+        <div id="report-compare" class="table-scroll"></div>
+        <p id="report-note" class="hint"></p>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>
+        全部数据为确定性种子生成的虚构数据（见 <code>src/lib/generator.js</code>）。
+        估计引擎与本页共用同一套 ESM 模块；验证测试 <code>tests/validate.test.js</code>
+        对照隐藏真值检验选择偏差、零概率群体与标签纠正。
+      </p>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "reportVersion": "2026-10-current",
+  "month": "2026-10",
+  "locked": false,
+  "evidenceCutoff": "2026-11-24",
+  "generatedAt": "2026-11-24",
+  "evidence": {
+    "reviewCount": 1752,
+    "consensusCount": 558,
+    "goldCount": 120,
+    "reviewsFingerprint": "71c96531d7e9290a",
+    "consensusFingerprint": "4323ab373c8790d5",
+    "goldFingerprint": "5f1d5b071e17cd1e",
+    "waves": [
+      "v1",
+      "v2"
+    ]
+  },
+  "measurement": {
+    "source": "adjudicated-gold",
+    "sensitivity": 0.9166666666666666,
+    "specificity": 0.9666666666666667,
+    "identifiable": true,
+    "seInterval": [
+      0.8193083153188752,
+      0.9638800759495141
+    ],
+    "spInterval": [
+      0.8863601247107462,
+      0.9908108735098498
+    ]
+  },
+  "estimate": {
+    "month": "2026-10",
+    "n": 432,
+    "frameSize": 2210,
+    "wSum": 3598.462332916661,
+    "naive": 0.18518518518518517,
+    "weighted": 0.07463446121727589,
+    "corrected": 0.046755993830878376,
+    "ci": [
+      0.022686516859446747,
+      0.07325950999059731
+    ],
+    "band": [
+      0,
+      0.08078482231947486
+    ]
+  },
+  "lineBatches": [
+    {
+      "lineId": "L1",
+      "batches": [
+        "B-L1-10"
+      ]
+    },
+    {
+      "lineId": "L2",
+      "batches": [
+        "B-L2-10"
+      ]
+    },
+    {
+      "lineId": "L3",
+      "batches": [
+        "B-L3-10"
+      ]
+    },
+    {
+      "lineId": "L4",
+      "batches": [
+        "B-L4-10"
+      ]
+    },
+    {
+      "lineId": "L5",
+      "batches": [
+        "B-L5-10"
+      ]
+    },
+    {
+      "lineId": "L6",
+      "batches": [
+        "B-L6-10"
+      ]
+    }
+  ],
+  "batches": [
+    {
+      "batchId": "B-L1-10",
+      "lineId": "L1",
+      "month": "2026-10",
+      "covered": true,
+      "gapReason": null,
+      "totalUnits": 380,
+      "n": 79,
+      "frameSize": 380,
+      "wSum": 831.809143916293,
+      "naive": 0.12658227848101267,
+      "weighted": 0.07374545215201422,
+      "corrected": 0.045749568473978375,
+      "ci": [
+        0,
+        0.1324470746889956
+      ],
+      "band": [
+        0,
+        0.07968744173952957
+      ]
+    },
+    {
+      "batchId": "B-L2-10",
+      "lineId": "L2",
+      "month": "2026-10",
+      "covered": true,
+      "gapReason": null,
+      "totalUnits": 420,
+      "n": 107,
+      "frameSize": 420,
+      "wSum": 852.2345071848805,
+      "naive": 0.09345794392523364,
+      "weighted": 0.04825300747915494,
+      "corrected": 0.01689019714621315,
+      "ci": [
+        0,
+        0.0684724950532413
+      ],
+      "band": [
+        0,
+        0.048219918164737564
+      ]
+    },
+    {
+      "batchId": "B-L3-10",
+      "lineId": "L3",
+      "month": "2026-10",
+      "covered": true,
+      "gapReason": null,
+      "totalUnits": 350,
+      "n": 81,
+      "frameSize": 350,
+      "wSum": 549.8625339268434,
+      "naive": 0.2716049382716049,
+      "weighted": 0.09616007455947838,
+      "corrected": 0.07112461270884346,
+      "ci": [
+        0.02249156569373532,
+        0.12430646519440368
+      ],
+      "band": [
+        0,
+        0.10735574378267874
+      ]
+    },
+    {
+      "batchId": "B-L4-10",
+      "lineId": "L4",
+      "month": "2026-10",
+      "covered": false,
+      "gapReason": "zero-inclusion-probability",
+      "totalUnits": 300,
+      "n": 0,
+      "frameSize": 300,
+      "wSum": 0,
+      "naive": null,
+      "weighted": null,
+      "corrected": null,
+      "ci": null,
+      "band": null
+    },
+    {
+      "batchId": "B-L5-10",
+      "lineId": "L5",
+      "month": "2026-10",
+      "covered": true,
+      "gapReason": null,
+      "totalUnits": 360,
+      "n": 79,
+      "frameSize": 360,
+      "wSum": 528.5256387118209,
+      "naive": 0.3670886075949367,
+      "weighted": 0.1349301598350908,
+      "corrected": 0.11501527528500846,
+      "ci": [
+        0.049572154270985574,
+        0.19654742950791654
+      ],
+      "band": [
+        0.025040317464763345,
+        0.15521300455398135
+      ]
+    },
+    {
+      "batchId": "B-L6-10",
+      "lineId": "L6",
+      "month": "2026-10",
+      "covered": true,
+      "gapReason": null,
+      "totalUnits": 400,
+      "n": 86,
+      "frameSize": 400,
+      "wSum": 836.0305091768254,
+      "naive": 0.10465116279069768,
+      "weighted": 0.05013621671474213,
+      "corrected": 0.019022132129896754,
+      "ci": [
+        0,
+        0.09301625149213379
+      ],
+      "band": [
+        0,
+        0.050544525779957675
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "batchId": "B-L1-10",
+      "lineId": "L1",
+      "month": "2026-10",
+      "size": 380,
+      "reviewedCount": 79,
+      "covered": true,
+      "gapReason": null,
+      "lineReferenceRate": 0.056948329467960454,
+      "partialInterval": null,
+      "uncoveredUnits": 0
+    },
+    {
+      "batchId": "B-L2-10",
+      "lineId": "L2",
+      "month": "2026-10",
+      "size": 420,
+      "reviewedCount": 107,
+      "covered": true,
+      "gapReason": null,
+      "lineReferenceRate": 0.04640668871768993,
+      "partialInterval": null,
+      "uncoveredUnits": 0
+    },
+    {
+      "batchId": "B-L3-10",
+      "lineId": "L3",
+      "month": "2026-10",
+      "size": 350,
+      "reviewedCount": 81,
+      "covered": true,
+      "gapReason": null,
+      "lineReferenceRate": 0.11522955278045663,
+      "partialInterval": null,
+      "uncoveredUnits": 0
+    },
+    {
+      "batchId": "B-L4-10",
+      "lineId": "L4",
+      "month": "2026-10",
+      "size": 300,
+      "reviewedCount": 0,
+      "covered": false,
+      "gapReason": "zero-inclusion-probability",
+      "lineReferenceRate": 0.0339732835467612,
+      "partialInterval": [
+        0,
+        1
+      ],
+      "uncoveredUnits": 300
+    },
+    {
+      "batchId": "B-L5-10",
+      "lineId": "L5",
+      "month": "2026-10",
+      "size": 360,
+      "reviewedCount": 79,
+      "covered": true,
+      "gapReason": null,
+      "lineReferenceRate": 0.10713121368834892,
+      "partialInterval": null,
+      "uncoveredUnits": 0
+    },
+    {
+      "batchId": "B-L6-10",
+      "lineId": "L6",
+      "month": "2026-10",
+      "size": 400,
+      "reviewedCount": 86,
+      "covered": true,
+      "gapReason": null,
+      "lineReferenceRate": 0.023269206492400607,
+      "partialInterval": null,
+      "uncoveredUnits": 0
+    }
+  ]
+}

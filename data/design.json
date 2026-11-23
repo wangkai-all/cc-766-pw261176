@@ -1,0 +1,157 @@
+{
+  "seed": "pointwise-quality-v1",
+  "generatedAt": "2026-11-24",
+  "months": [
+    "2026-10",
+    "2026-11"
+  ],
+  "lines": [
+    {
+      "lineId": "L1",
+      "name": "产线1"
+    },
+    {
+      "lineId": "L2",
+      "name": "产线2"
+    },
+    {
+      "lineId": "L3",
+      "name": "产线3"
+    },
+    {
+      "lineId": "L4",
+      "name": "产线4"
+    },
+    {
+      "lineId": "L5",
+      "name": "产线5"
+    },
+    {
+      "lineId": "L6",
+      "name": "产线6"
+    }
+  ],
+  "batches": [
+    {
+      "batchId": "B-L1-10",
+      "lineId": "L1",
+      "month": "2026-10",
+      "size": 380,
+      "baseProb": 0.28,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L2-10",
+      "lineId": "L2",
+      "month": "2026-10",
+      "size": 420,
+      "baseProb": 0.32,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L3-10",
+      "lineId": "L3",
+      "month": "2026-10",
+      "size": 350,
+      "baseProb": 0.36,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L4-10",
+      "lineId": "L4",
+      "month": "2026-10",
+      "size": 300,
+      "baseProb": 0,
+      "zeroProbability": true
+    },
+    {
+      "batchId": "B-L5-10",
+      "lineId": "L5",
+      "month": "2026-10",
+      "size": 360,
+      "baseProb": 0.38,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L6-10",
+      "lineId": "L6",
+      "month": "2026-10",
+      "size": 400,
+      "baseProb": 0.3,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L1-11",
+      "lineId": "L1",
+      "month": "2026-11",
+      "size": 400,
+      "baseProb": 0.26,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L2-11",
+      "lineId": "L2",
+      "month": "2026-11",
+      "size": 440,
+      "baseProb": 0.31,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L3-11",
+      "lineId": "L3",
+      "month": "2026-11",
+      "size": 370,
+      "baseProb": 0.34,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L4-11",
+      "lineId": "L4",
+      "month": "2026-11",
+      "size": 320,
+      "baseProb": 0.16,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L5-11",
+      "lineId": "L5",
+      "month": "2026-11",
+      "size": 390,
+      "baseProb": 0.37,
+      "zeroProbability": false
+    },
+    {
+      "batchId": "B-L6-11",
+      "lineId": "L6",
+      "month": "2026-11",
+      "size": 420,
+      "baseProb": 0.29,
+      "zeroProbability": false
+    }
+  ],
+  "waves": [
+    {
+      "wave": "v1",
+      "name": "常规复查",
+      "mechanism": "Bernoulli(inclusionProb)",
+      "date": "月末"
+    },
+    {
+      "wave": "v2",
+      "name": "补录复查",
+      "mechanism": "条件加权抽样（v1 未中选总体；盲区逆概率 / 高分对照）",
+      "date": "2026-11-20"
+    }
+  ],
+  "counts": {
+    "units": 4550,
+    "reviewed": 1074,
+    "wave1": 670,
+    "wave2": 404,
+    "consensus": 558,
+    "gold": 120,
+    "zeroProbBatches": [
+      "B-L4-10"
+    ]
+  }
+}
